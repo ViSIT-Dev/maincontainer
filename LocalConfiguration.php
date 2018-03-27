@@ -3,8 +3,8 @@ return [
     'BE' => [
         'debug' => false,
         'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$pbkdf2-sha256$25000$5fw1XPbS5943nFYB30TG2w$fH4j88VYOWiX3FSHgtc2BY0vprCHjAFN0TwLxYDwW3k',
-        'loginSecurityLevel' => 'rsa',
+        'installToolPassword' => '$pbkdf2-sha256$25000$LSplyFyrGxTZAU5QUjxaQw$p.bXAKFLPqm3MjvnvfmS6pOqdMv608eqmYt8MiuwzxU',
+        'loginSecurityLevel' => 'normal',
     ],
     'DB' => [
         'Connections' => [
@@ -65,7 +65,7 @@ return [
         'devIPmask' => '',
         'displayErrors' => 0,
         'enableDeprecationLog' => false,
-        'encryptionKey' => '68f749da1e4ef2974ac13fd407bd061d635b4e51f09bc016a738f58c2a37e92aa8789b79439f399da7d21c36cc2790f9',
+        'encryptionKey' => '4c10e14974e25db174e9dc0e70007348a1679de6437971ec94355d79b502a7d8170f795f0d6228d23918ca53ecb48069',
         'exceptionalErrors' => 20480,
         'isInitialDatabaseImportDone' => true,
         'isInitialInstallationInProgress' => false,

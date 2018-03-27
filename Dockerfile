@@ -1,23 +1,28 @@
 FROM martinhelmich/typo3
-LABEL maintainer="Kris Raich <krispin.raich@gh-kufstein.ac.at>"
+LABEL maintainer="Kris Raich <krispin.raich@fh-kufstein.ac.at>"
 
+#import db dump
+COPY db.sql /tmp/db.sql
+COPY LocalConfiguration.php /var/www/html/typo3conf/LocalConfiguration.php
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
 	apt-get update && \
 
-	#install utils and mysql
-	apt-get install -y git wget nano && \
-	apt-get install -y git mysql-server && \
-	/etc/init.d/mysql restart && \
+	#install utils
+	apt-get install -y wget git nano && \
 	
-	#add typo3 user
-	mysql -e "CREATE DATABASE typo3;" && \
-    mysql -e "CREATE USER typo3@localhost IDENTIFIED BY 'typo3';" && \
-    mysql -e "GRANT ALL PRIVILEGES ON typo3.* TO 'typo3'@'localhost';" && \
-    mysql -e "FLUSH PRIVILEGES;"
+	#install mysql
+	apt-get install -y mysql-server && \
+	/etc/init.d/mysql start && \
 	
-#install typo3
-COPY LocalConfiguration.php /var/www/html/typo3conf/LocalConfiguration.php
+	#add typo3 user and prepare db
+	mysql -u root < /tmp/db.sql  && \
+	/etc/init.d/mysql start && \
 	
-#docker run --name visit-main --rm  -p 80:80 ruhmesmeile/php-nginx-typo3
-#docker exec -it visit-main /bin/bash
+	#cleanup
+	wget -qO- http://localhost/typo3/ &> /dev/null && \
+	rm -f /tmp/db.sql  /var/www/html/FIRST_INSTALL && \
+	chown www-data:www-data  /var/www/html/typo3conf/LocalConfiguration.php
+	
+
+#CMD tail -f /var/log/mysql/error.log
