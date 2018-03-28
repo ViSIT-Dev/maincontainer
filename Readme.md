@@ -13,5 +13,5 @@ docker exec -it visit-main /bin/bash
 docker stop visit-main
 docker rmi visitapp/maincontainer
 
-#code
+
 mysqldump -u root typo3 > ../dump.html
