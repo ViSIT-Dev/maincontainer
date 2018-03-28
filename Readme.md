@@ -10,8 +10,9 @@ Basiert auf Container: martinhelmich/typo3
 Passwort und nach dem Login ändern!
 
 ## Kommandos
-* docker build  -t "visitapp/maincontainer" .
-* docker run --name visit-main --rm -p 80:80 visitapp/maincontainer
+* docker run --name visit-main -p 80:80 visitapp/maincontainer
 * docker exec -it visit-main /bin/bash
 * docker stop visit-main
+* docker build  -t "visitapp/maincontainer" .
 * docker rmi visitapp/maincontainer
+
