@@ -12,6 +12,3 @@ docker run --name visit-main --rm -p 80:80 visitapp/maincontainer
 docker exec -it visit-main /bin/bash
 docker stop visit-main
 docker rmi visitapp/maincontainer
-
-
-mysqldump -u root typo3 > ../dump.html
