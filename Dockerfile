@@ -7,7 +7,7 @@ COPY res/db.sql /tmp/db.sql
 COPY res/LocalConfiguration.php /var/www/html/typo3conf/LocalConfiguration.php
 
 
-RUN echo "----- start -----"   
+RUN	echo "----- start -----"   
 RUN		apt-get update 
 
 RUN	echo "----- install utils -----" 
@@ -23,8 +23,11 @@ RUN		chown www-data:www-data /var/www/html/typo3conf/LocalConfiguration.php
 
 RUN	echo "----- cleanup -----"  
 RUN		rm -f /tmp/db.sql 
-RUN 	apt-get clean
+RUN		apt-get clean
 
 RUN	echo "----- done -----" 
 
-CMD bash /root/run.sh
+CMD	bash /root/run.sh
+
+#export DB
+#mysqldump -u root typo3 > export.html
