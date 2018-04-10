@@ -1,3 +1,6 @@
+Sponsored by Interreg Bayern/Österreich im Zuge des ViSIT Projektes
+(c) FH Kufstein Tirol
+
 # App Container für ViSIT
 
 [![Docker build status](https://img.shields.io/docker/build/visitapp/maincontainer.svg)](https://hub.docker.com/r/visitapp/maincontainer/)
