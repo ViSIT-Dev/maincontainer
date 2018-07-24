@@ -6,26 +6,17 @@ COPY res/run.sh /root/run.sh
 COPY res/db.sql /tmp/db.sql
 COPY res/LocalConfiguration.php /var/www/html/typo3conf/LocalConfiguration.php
 
+RUN	apt-get update && \
+	apt-get install -y  git wget nano && \
+	export DEBIAN_FRONTEND=noninteractive && \
+	apt-get install -y mysql-server && \
+	/etc/init.d/mysql start && \
+	mysql -u root < /tmp/db.sql && \
+	chown -hR www-data:www-data /var/www/html/ && \
+	rm -f /tmp/db.sql && \
+	apt-get clean
 
-RUN	echo "----- start -----"   
-RUN		apt-get update 
-
-RUN	echo "----- install utils -----" 
-RUN		apt-get install -y  git wget nano 
-
-RUN	echo "----- install mysql -----" 
-RUN		export DEBIAN_FRONTEND=noninteractive 
-RUN		apt-get install -y mysql-server 
-
-RUN	echo "----- add typo3 user and prepare db -----"  
-RUN		/etc/init.d/mysql start && mysql -u root < /tmp/db.sql  
-RUN		chown www-data:www-data /var/www/html/typo3conf/LocalConfiguration.php
-
-RUN	echo "----- cleanup -----"  
-RUN		rm -f /tmp/db.sql 
-RUN		apt-get clean
-
-RUN	echo "----- done -----" 
+VOLUME ["/var/www/html/typo3conf/ext"]
 
 CMD	bash /root/run.sh
 
