@@ -12,7 +12,7 @@ RUN	apt-get update && \
 	apt-get install -y mysql-server && \
 	/etc/init.d/mysql start && \
 	mysql -u root < /tmp/db.sql && \
-	chown -hR www-data:www-data /var/www/html/ && \
+	chown -hR www-data:www-data /var/www/html && \
 	rm -f /tmp/db.sql && \
 	apt-get clean
 
