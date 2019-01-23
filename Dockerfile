@@ -1,4 +1,4 @@
-FROM martinhelmich/typo3
+FROM martinhelmich/typo3:8
 LABEL maintainer="Kris Raich"
 
 #import files
@@ -12,7 +12,7 @@ RUN	apt-get update && \
 	apt-get install -y mysql-server && \
 	/etc/init.d/mysql start && \
 	mysql -u root < /tmp/db.sql && \
-	chown -hR www-data:www-data /var/www/html && \
+	chown www-data:www-data /var/www/html -hR && \
 	rm -f /tmp/db.sql && \
 	apt-get clean
 
