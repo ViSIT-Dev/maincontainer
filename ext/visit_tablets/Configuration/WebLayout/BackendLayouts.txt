@@ -1,4 +1,0 @@
-########################
-#### BACKENDLAYOUTS ####
-########################
-<INCLUDE_TYPOSCRIPT: source="DIR:EXT:visit_tablets/WebLayout/BackendLayouts" extensions="txt">
