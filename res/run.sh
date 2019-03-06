@@ -6,7 +6,6 @@ then
 fi
 
 chown www-data:www-data /var/www/html/typo3conf -hR
-chown mysql:mysql /var/lib/mysql/typo3 -hR
 
 /etc/init.d/mysql start > /dev/null
 touch /var/log/mysql/error.log /var/log/apache2/error.log
