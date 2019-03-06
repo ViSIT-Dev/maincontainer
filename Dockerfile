@@ -13,7 +13,9 @@ RUN	apt-get update && \
 	/etc/init.d/mysql start && \
 	mysql -u root < /tmp/db.sql && \
 	rm -f /tmp/db.sql && \
-	apt-get clean
+	apt-get clean && \
+	echo "php_value upload_max_filesize 500M" >> /var/www/html/.htaccess && \
+	echo "php_value post_max_size 500M" >> /var/www/html/.htaccess
 
 VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql"]
 
