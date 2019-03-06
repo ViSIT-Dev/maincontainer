@@ -15,6 +15,6 @@ RUN	apt-get update && \
 	rm -f /tmp/db.sql && \
 	apt-get clean
 
-VOLUME ["/var/www/html/typo3conf/ext/visit_tablets"]
+VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql"]
 
 CMD	bash /root/run.sh
