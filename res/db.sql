@@ -1553,6 +1553,7 @@ CREATE TABLE `sys_language` (
 
 LOCK TABLES `sys_language` WRITE;
 /*!40000 ALTER TABLE `sys_language` DISABLE KEYS */;
+INSERT INTO `sys_language` (`uid`, `pid`, `tstamp`, `hidden`, `title`, `flag`, `language_isocode`, `static_lang_isocode`, `sorting`) VALUES (1,	0,	1551861845,	0,	'English',	'gb',	'en',	0,	256);
 /*!40000 ALTER TABLE `sys_language` ENABLE KEYS */;
 UNLOCK TABLES;
 
