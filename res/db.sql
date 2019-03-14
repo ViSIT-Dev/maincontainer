@@ -2018,6 +2018,48 @@ LOCK TABLES `tx_extensionmanager_domain_model_repository` WRITE;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+
+
+DROP TABLE IF EXISTS `tx_scheduler_task`;
+CREATE TABLE `tx_scheduler_task` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `disable` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `description` text COLLATE utf8_unicode_ci,
+  `nextexecution` int(10) unsigned NOT NULL DEFAULT '0',
+  `lastexecution_time` int(10) unsigned NOT NULL DEFAULT '0',
+  `lastexecution_failure` text COLLATE utf8_unicode_ci,
+  `lastexecution_context` varchar(3) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `serialized_task_object` blob,
+  `serialized_executions` blob,
+  `task_group` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `index_nextexecution` (`nextexecution`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `tx_scheduler_task` (`uid`, `crdate`, `disable`, `description`, `nextexecution`, `lastexecution_time`, `lastexecution_failure`, `lastexecution_context`, `serialized_task_object`, `serialized_executions`, `task_group`) VALUES
+(1,	1552571449,	1,	'',	1552571439,	0,	NULL,	'',	'O:53:\"Visit\\VisitTablets\\SchedulerTasks\\UpdateExtensionTask\":7:{s:10:\"\0*\0taskUid\";i:1;s:11:\"\0*\0disabled\";b:1;s:19:\"\0*\0runOnNextCronJob\";b:0;s:12:\"\0*\0execution\";O:29:\"TYPO3\\CMS\\Scheduler\\Execution\":6:{s:8:\"\0*\0start\";i:1552571439;s:6:\"\0*\0end\";i:1552571439;s:11:\"\0*\0interval\";i:0;s:11:\"\0*\0multiple\";i:0;s:10:\"\0*\0cronCmd\";s:0:\"\";s:23:\"\0*\0isNewSingleExecution\";b:0;}s:16:\"\0*\0executionTime\";i:1552571439;s:14:\"\0*\0description\";s:0:\"\";s:12:\"\0*\0taskGroup\";i:0;}',	NULL,	0);
+
+DROP TABLE IF EXISTS `tx_scheduler_task_group`;
+CREATE TABLE `tx_scheduler_task_group` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `groupName` varchar(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `description` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+-- 2019-03-14 13:52:46
+
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

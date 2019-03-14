@@ -15,7 +15,7 @@ RUN echo "deb http://apt.syncthing.net/ syncthing stable" | tee /etc/apt/sources
 	mysql -u root < /tmp/db.sql && \
 	rm -f /tmp/db.sql && \
 	apt-get clean && \
-	wget https://github.com/ViSIT-Dev/syncthing-control/raw/master/dist/Syncthing_Control.jar -P /var/www/ && chown www-data:www-data /var/www/Syncthing_Control.jar && \
+	wget -q https://github.com/ViSIT-Dev/syncthing-control/raw/master/dist/Syncthing_Control.jar -P /var/www/ && chown www-data:www-data /var/www/Syncthing_Control.jar && \
 	echo "php_value upload_max_filesize 500M" >> /var/www/html/.htaccess && \
 	echo "php_value post_max_size 500M" >> /var/www/html/.htaccess
 
