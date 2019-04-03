@@ -1,36 +1,11 @@
--- MySQL dump 10.16  Distrib 10.1.26-MariaDB, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: typo3
--- ------------------------------------------------------
--- Server version	10.1.26-MariaDB-0+deb9u1
+-- Adminer 4.6.2 MySQL dump
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
-CREATE DATABASE IF NOT EXISTS typo3;
-CREATE USER typo3@localhost IDENTIFIED BY 'typo3';
-GRANT ALL PRIVILEGES ON typo3.* TO 'typo3'@'localhost';
-FLUSH PRIVILEGES;
-
-use typo3;
-
-
---
--- Table structure for table `backend_layout`
---
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 DROP TABLE IF EXISTS `backend_layout`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `backend_layout` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -58,24 +33,9 @@ CREATE TABLE `backend_layout` (
   KEY `parent` (`pid`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `backend_layout`
---
-
-LOCK TABLES `backend_layout` WRITE;
-/*!40000 ALTER TABLE `backend_layout` DISABLE KEYS */;
-/*!40000 ALTER TABLE `backend_layout` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `be_groups`
---
 
 DROP TABLE IF EXISTS `be_groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `be_groups` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -106,24 +66,9 @@ CREATE TABLE `be_groups` (
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `be_groups`
---
-
-LOCK TABLES `be_groups` WRITE;
-/*!40000 ALTER TABLE `be_groups` DISABLE KEYS */;
-/*!40000 ALTER TABLE `be_groups` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `be_sessions`
---
 
 DROP TABLE IF EXISTS `be_sessions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `be_sessions` (
   `ses_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `ses_iplock` varchar(39) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -134,24 +79,9 @@ CREATE TABLE `be_sessions` (
   PRIMARY KEY (`ses_id`),
   KEY `ses_tstamp` (`ses_tstamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `be_sessions`
---
-
-LOCK TABLES `be_sessions` WRITE;
-/*!40000 ALTER TABLE `be_sessions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `be_sessions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `be_users`
---
 
 DROP TABLE IF EXISTS `be_users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `be_users` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -191,8 +121,8 @@ CREATE TABLE `be_users` (
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`),
   KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 --
 -- Dumping data for table `be_users`
@@ -204,13 +134,9 @@ INSERT INTO `be_users` VALUES (1,0,1522168028,'admin','',0,'$pbkdf2-sha256$25000
 /*!40000 ALTER TABLE `be_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `cache_md5params`
---
+
 
 DROP TABLE IF EXISTS `cache_md5params`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cache_md5params` (
   `md5hash` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `tstamp` int(11) NOT NULL DEFAULT '0',
@@ -218,24 +144,9 @@ CREATE TABLE `cache_md5params` (
   `params` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`md5hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cache_md5params`
---
-
-LOCK TABLES `cache_md5params` WRITE;
-/*!40000 ALTER TABLE `cache_md5params` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cache_md5params` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cache_treelist`
---
 
 DROP TABLE IF EXISTS `cache_treelist`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cache_treelist` (
   `md5hash` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -244,24 +155,9 @@ CREATE TABLE `cache_treelist` (
   `expires` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`md5hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cache_treelist`
---
-
-LOCK TABLES `cache_treelist` WRITE;
-/*!40000 ALTER TABLE `cache_treelist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cache_treelist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_hash`
---
 
 DROP TABLE IF EXISTS `cf_cache_hash`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_hash` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -269,25 +165,10 @@ CREATE TABLE `cf_cache_hash` (
   `content` mediumblob,
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `cf_cache_hash`
---
-
-LOCK TABLES `cf_cache_hash` WRITE;
-/*!40000 ALTER TABLE `cf_cache_hash` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_hash` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_hash_tags`
---
 
 DROP TABLE IF EXISTS `cf_cache_hash_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_hash_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -295,25 +176,10 @@ CREATE TABLE `cf_cache_hash_tags` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`),
   KEY `cache_tag` (`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `cf_cache_hash_tags`
---
-
-LOCK TABLES `cf_cache_hash_tags` WRITE;
-/*!40000 ALTER TABLE `cf_cache_hash_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_hash_tags` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_imagesizes`
---
 
 DROP TABLE IF EXISTS `cf_cache_imagesizes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_imagesizes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -322,24 +188,9 @@ CREATE TABLE `cf_cache_imagesizes` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_cache_imagesizes`
---
-
-LOCK TABLES `cf_cache_imagesizes` WRITE;
-/*!40000 ALTER TABLE `cf_cache_imagesizes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_imagesizes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_imagesizes_tags`
---
 
 DROP TABLE IF EXISTS `cf_cache_imagesizes_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_imagesizes_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -348,24 +199,9 @@ CREATE TABLE `cf_cache_imagesizes_tags` (
   KEY `cache_id` (`identifier`),
   KEY `cache_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_cache_imagesizes_tags`
---
-
-LOCK TABLES `cf_cache_imagesizes_tags` WRITE;
-/*!40000 ALTER TABLE `cf_cache_imagesizes_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_imagesizes_tags` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_pages`
---
 
 DROP TABLE IF EXISTS `cf_cache_pages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_pages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -374,50 +210,9 @@ CREATE TABLE `cf_cache_pages` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_cache_pages`
---
-
-LOCK TABLES `cf_cache_pages` WRITE;
-/*!40000 ALTER TABLE `cf_cache_pages` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_pages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_pages_tags`
---
-
-DROP TABLE IF EXISTS `cf_cache_pages_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cf_cache_pages_tags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `tag` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
-  KEY `cache_id` (`identifier`),
-  KEY `cache_tag` (`tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cf_cache_pages_tags`
---
-
-LOCK TABLES `cf_cache_pages_tags` WRITE;
-/*!40000 ALTER TABLE `cf_cache_pages_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_pages_tags` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_pagesection`
---
 
 DROP TABLE IF EXISTS `cf_cache_pagesection`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_pagesection` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -426,24 +221,9 @@ CREATE TABLE `cf_cache_pagesection` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_cache_pagesection`
---
-
-LOCK TABLES `cf_cache_pagesection` WRITE;
-/*!40000 ALTER TABLE `cf_cache_pagesection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_pagesection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_pagesection_tags`
---
 
 DROP TABLE IF EXISTS `cf_cache_pagesection_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_pagesection_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -452,24 +232,20 @@ CREATE TABLE `cf_cache_pagesection_tags` (
   KEY `cache_id` (`identifier`),
   KEY `cache_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_cache_pagesection_tags`
---
 
-LOCK TABLES `cf_cache_pagesection_tags` WRITE;
-/*!40000 ALTER TABLE `cf_cache_pagesection_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_pagesection_tags` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `cf_cache_pages_tags`;
+CREATE TABLE `cf_cache_pages_tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `tag` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `cache_id` (`identifier`),
+  KEY `cache_tag` (`tag`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Table structure for table `cf_cache_rootline`
---
 
 DROP TABLE IF EXISTS `cf_cache_rootline`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_rootline` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -478,24 +254,9 @@ CREATE TABLE `cf_cache_rootline` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_cache_rootline`
---
-
-LOCK TABLES `cf_cache_rootline` WRITE;
-/*!40000 ALTER TABLE `cf_cache_rootline` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_rootline` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_cache_rootline_tags`
---
 
 DROP TABLE IF EXISTS `cf_cache_rootline_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_cache_rootline_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -504,24 +265,9 @@ CREATE TABLE `cf_cache_rootline_tags` (
   KEY `cache_id` (`identifier`),
   KEY `cache_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_cache_rootline_tags`
---
-
-LOCK TABLES `cf_cache_rootline_tags` WRITE;
-/*!40000 ALTER TABLE `cf_cache_rootline_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_cache_rootline_tags` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_extbase_datamapfactory_datamap`
---
 
 DROP TABLE IF EXISTS `cf_extbase_datamapfactory_datamap`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_extbase_datamapfactory_datamap` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -530,24 +276,9 @@ CREATE TABLE `cf_extbase_datamapfactory_datamap` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_extbase_datamapfactory_datamap`
---
-
-LOCK TABLES `cf_extbase_datamapfactory_datamap` WRITE;
-/*!40000 ALTER TABLE `cf_extbase_datamapfactory_datamap` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_extbase_datamapfactory_datamap` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_extbase_datamapfactory_datamap_tags`
---
 
 DROP TABLE IF EXISTS `cf_extbase_datamapfactory_datamap_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_extbase_datamapfactory_datamap_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -556,24 +287,9 @@ CREATE TABLE `cf_extbase_datamapfactory_datamap_tags` (
   KEY `cache_id` (`identifier`),
   KEY `cache_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_extbase_datamapfactory_datamap_tags`
---
-
-LOCK TABLES `cf_extbase_datamapfactory_datamap_tags` WRITE;
-/*!40000 ALTER TABLE `cf_extbase_datamapfactory_datamap_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_extbase_datamapfactory_datamap_tags` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_extbase_object`
---
 
 DROP TABLE IF EXISTS `cf_extbase_object`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_extbase_object` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -581,25 +297,10 @@ CREATE TABLE `cf_extbase_object` (
   `content` mediumblob,
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `cf_extbase_object`
---
-
-LOCK TABLES `cf_extbase_object` WRITE;
-/*!40000 ALTER TABLE `cf_extbase_object` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_extbase_object` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_extbase_object_tags`
---
 
 DROP TABLE IF EXISTS `cf_extbase_object_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_extbase_object_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -608,24 +309,9 @@ CREATE TABLE `cf_extbase_object_tags` (
   KEY `cache_id` (`identifier`),
   KEY `cache_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_extbase_object_tags`
---
-
-LOCK TABLES `cf_extbase_object_tags` WRITE;
-/*!40000 ALTER TABLE `cf_extbase_object_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_extbase_object_tags` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_extbase_reflection`
---
 
 DROP TABLE IF EXISTS `cf_extbase_reflection`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_extbase_reflection` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -634,24 +320,9 @@ CREATE TABLE `cf_extbase_reflection` (
   PRIMARY KEY (`id`),
   KEY `cache_id` (`identifier`,`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_extbase_reflection`
---
-
-LOCK TABLES `cf_extbase_reflection` WRITE;
-/*!40000 ALTER TABLE `cf_extbase_reflection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_extbase_reflection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `cf_extbase_reflection_tags`
---
 
 DROP TABLE IF EXISTS `cf_extbase_reflection_tags`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cf_extbase_reflection_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -660,24 +331,9 @@ CREATE TABLE `cf_extbase_reflection_tags` (
   KEY `cache_id` (`identifier`),
   KEY `cache_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cf_extbase_reflection_tags`
---
-
-LOCK TABLES `cf_extbase_reflection_tags` WRITE;
-/*!40000 ALTER TABLE `cf_extbase_reflection_tags` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cf_extbase_reflection_tags` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `fe_groups`
---
 
 DROP TABLE IF EXISTS `fe_groups`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fe_groups` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tx_extbase_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -695,24 +351,9 @@ CREATE TABLE `fe_groups` (
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `fe_groups`
---
-
-LOCK TABLES `fe_groups` WRITE;
-/*!40000 ALTER TABLE `fe_groups` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fe_groups` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `fe_sessions`
---
 
 DROP TABLE IF EXISTS `fe_sessions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fe_sessions` (
   `ses_id` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `ses_iplock` varchar(39) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -724,24 +365,9 @@ CREATE TABLE `fe_sessions` (
   PRIMARY KEY (`ses_id`),
   KEY `ses_tstamp` (`ses_tstamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `fe_sessions`
---
-
-LOCK TABLES `fe_sessions` WRITE;
-/*!40000 ALTER TABLE `fe_sessions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fe_sessions` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `fe_users`
---
 
 DROP TABLE IF EXISTS `fe_users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fe_users` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tx_extbase_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -782,24 +408,9 @@ CREATE TABLE `fe_users` (
   KEY `username` (`username`),
   KEY `is_online` (`is_online`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `fe_users`
---
-
-LOCK TABLES `fe_users` WRITE;
-/*!40000 ALTER TABLE `fe_users` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fe_users` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pages`
---
 
 DROP TABLE IF EXISTS `pages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pages` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -873,30 +484,15 @@ CREATE TABLE `pages` (
   KEY `alias` (`alias`),
   KEY `determineSiteRoot` (`is_siteroot`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `pages`
---
-
-LOCK TABLES `pages` WRITE;
-/*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 INSERT INTO `pages` (`uid`, `pid`, `t3ver_oid`, `t3ver_id`, `t3ver_wsid`, `t3ver_label`, `t3ver_state`, `t3ver_stage`, `t3ver_count`, `t3ver_tstamp`, `t3ver_move_id`, `t3_origuid`, `tstamp`, `sorting`, `deleted`, `perms_userid`, `perms_groupid`, `perms_user`, `perms_group`, `perms_everybody`, `editlock`, `crdate`, `cruser_id`, `hidden`, `title`, `doktype`, `TSconfig`, `is_siteroot`, `php_tree_stop`, `url`, `starttime`, `endtime`, `urltype`, `shortcut`, `shortcut_mode`, `no_cache`, `fe_group`, `subtitle`, `layout`, `target`, `media`, `lastUpdated`, `keywords`, `cache_timeout`, `cache_tags`, `newUntil`, `description`, `no_search`, `SYS_LASTCHANGED`, `abstract`, `module`, `extendToSubpages`, `author`, `author_email`, `nav_title`, `nav_hide`, `content_from_pid`, `mount_pid`, `mount_pid_ol`, `alias`, `l18n_cfg`, `fe_login_mode`, `backend_layout`, `backend_layout_next_level`, `tsconfig_includes`, `categories`) VALUES
 (1,	0,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1552482008,	256,	0,	1,	0,	31,	27,	0,	0,	1551856801,	1,	0,	'Visit Apps',	1,	NULL,	1,	0,	'',	0,	0,	1,	0,	1,	0,	'',	'',	0,	'',	0,	0,	NULL,	0,	'',	0,	NULL,	0,	1552482008,	NULL,	'',	0,	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	'',	'',	NULL,	0),
 (2,	1,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860866,	256,	0,	1,	0,	31,	27,	0,	0,	1551860856,	1,	0,	'Karte',	1,	NULL,	0,	0,	'',	0,	0,	1,	0,	0,	0,	'0',	'',	0,	'',	0,	0,	NULL,	0,	'',	0,	NULL,	0,	1551860866,	NULL,	'',	0,	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	'',	'',	NULL,	0),
 (3,	1,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860874,	512,	0,	1,	0,	31,	27,	0,	0,	1551860869,	1,	0,	'Glossar',	1,	NULL,	0,	0,	'',	0,	0,	1,	0,	0,	0,	'0',	'',	0,	'',	0,	0,	NULL,	0,	'',	0,	NULL,	0,	1551860874,	NULL,	'',	0,	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	'',	'',	NULL,	0),
-(4,	1,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860892,	768,	0,	1,	0,	31,	27,	0,	0,	1551860878,	1,	0,	'Galerie',	1,	NULL,	0,	0,	'',	0,	0,	1,	0,	0,	0,	'0',	'',	0,	'',	0,	0,	NULL,	0,	'',	0,	NULL,	0,	0,	NULL,	'',	0,	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	'',	'',	NULL,	0),
-(5,	1,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860892,	768,	0,	1,	0,	31,	27,	0,	0,	1551860878,	1,	0,	'Fernrohr',	1,	NULL,	0,	0,	'',	0,	0,	1,	0,	0,	0,	'0',	'',	0,	'',	0,	0,	NULL,	0,	'',	0,	NULL,	0,	0,	NULL,	'',	0,	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	'',	'',	NULL,	0);
-/*!40000 ALTER TABLE `pages` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pages_language_overlay`
---
+(4,	1,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860892,	768,	0,	1,	0,	31,	27,	0,	0,	1551860878,	1,	0,	'Galerie',	1,	NULL,	0,	0,	'',	0,	0,	1,	0,	0,	0,	'0',	'',	0,	'',	0,	0,	NULL,	0,	'',	0,	NULL,	0,	1551860892,	NULL,	'',	0,	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	'',	'',	NULL,	0),
+(5,	1,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860892,	768,	0,	1,	0,	31,	27,	0,	0,	1551860878,	1,	0,	'Fernrohr',	1,	NULL,	0,	0,	'',	0,	0,	1,	0,	0,	0,	'0',	'',	0,	'',	0,	0,	NULL,	0,	'',	0,	NULL,	0,	1551860892,	NULL,	'',	0,	'',	'',	'',	0,	0,	0,	0,	'',	0,	0,	'',	'',	NULL,	0);
 
 DROP TABLE IF EXISTS `pages_language_overlay`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pages_language_overlay` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -938,24 +534,9 @@ CREATE TABLE `pages_language_overlay` (
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`),
   KEY `parent` (`pid`,`sys_language_uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `pages_language_overlay`
---
-
-LOCK TABLES `pages_language_overlay` WRITE;
-/*!40000 ALTER TABLE `pages_language_overlay` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pages_language_overlay` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_be_shortcuts`
---
 
 DROP TABLE IF EXISTS `sys_be_shortcuts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_be_shortcuts` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `userid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -967,24 +548,9 @@ CREATE TABLE `sys_be_shortcuts` (
   PRIMARY KEY (`uid`),
   KEY `event` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_be_shortcuts`
---
-
-LOCK TABLES `sys_be_shortcuts` WRITE;
-/*!40000 ALTER TABLE `sys_be_shortcuts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_be_shortcuts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_category`
---
 
 DROP TABLE IF EXISTS `sys_category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_category` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1020,24 +586,9 @@ CREATE TABLE `sys_category` (
   KEY `category_parent` (`parent`),
   KEY `category_list` (`pid`,`deleted`,`sys_language_uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_category`
---
-
-LOCK TABLES `sys_category` WRITE;
-/*!40000 ALTER TABLE `sys_category` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_category` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_category_record_mm`
---
 
 DROP TABLE IF EXISTS `sys_category_record_mm`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_category_record_mm` (
   `uid_local` int(11) NOT NULL DEFAULT '0',
   `uid_foreign` int(11) NOT NULL DEFAULT '0',
@@ -1048,24 +599,9 @@ CREATE TABLE `sys_category_record_mm` (
   KEY `uid_local_foreign` (`uid_local`,`uid_foreign`),
   KEY `uid_foreign_tablefield` (`uid_foreign`,`tablenames`(40),`fieldname`(3),`sorting_foreign`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_category_record_mm`
---
-
-LOCK TABLES `sys_category_record_mm` WRITE;
-/*!40000 ALTER TABLE `sys_category_record_mm` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_category_record_mm` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_collection`
---
 
 DROP TABLE IF EXISTS `sys_collection`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_collection` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1100,24 +636,9 @@ CREATE TABLE `sys_collection` (
   KEY `parent` (`pid`,`deleted`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_collection`
---
-
-LOCK TABLES `sys_collection` WRITE;
-/*!40000 ALTER TABLE `sys_collection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_collection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_collection_entries`
---
 
 DROP TABLE IF EXISTS `sys_collection_entries`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_collection_entries` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `uid_local` int(11) NOT NULL DEFAULT '0',
@@ -1128,24 +649,9 @@ CREATE TABLE `sys_collection_entries` (
   KEY `uid_local` (`uid_local`),
   KEY `uid_foreign` (`uid_foreign`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_collection_entries`
---
-
-LOCK TABLES `sys_collection_entries` WRITE;
-/*!40000 ALTER TABLE `sys_collection_entries` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_collection_entries` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_domain`
---
 
 DROP TABLE IF EXISTS `sys_domain`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_domain` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1164,24 +670,9 @@ CREATE TABLE `sys_domain` (
   KEY `getSysDomain` (`redirectTo`,`hidden`),
   KEY `getDomainStartPage` (`pid`,`hidden`,`domainName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_domain`
---
-
-LOCK TABLES `sys_domain` WRITE;
-/*!40000 ALTER TABLE `sys_domain` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_domain` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_file`
---
 
 DROP TABLE IF EXISTS `sys_file`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_file` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1208,24 +699,27 @@ CREATE TABLE `sys_file` (
   KEY `lastindex` (`last_indexed`),
   KEY `sha1` (`sha1`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_file`
---
 
-LOCK TABLES `sys_file` WRITE;
-/*!40000 ALTER TABLE `sys_file` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_file` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `sys_filemounts`;
+CREATE TABLE `sys_filemounts` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `description` varchar(2000) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `base` int(10) unsigned NOT NULL DEFAULT '0',
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `read_only` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Table structure for table `sys_file_collection`
---
 
 DROP TABLE IF EXISTS `sys_file_collection`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_file_collection` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1262,24 +756,9 @@ CREATE TABLE `sys_file_collection` (
   KEY `parent` (`pid`,`deleted`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_file_collection`
---
-
-LOCK TABLES `sys_file_collection` WRITE;
-/*!40000 ALTER TABLE `sys_file_collection` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_file_collection` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_file_metadata`
---
 
 DROP TABLE IF EXISTS `sys_file_metadata`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_file_metadata` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1310,26 +789,12 @@ CREATE TABLE `sys_file_metadata` (
   PRIMARY KEY (`uid`),
   KEY `file` (`file`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`),
-  KEY `fal_filelist` (`l10n_parent`,`sys_language_uid`)
+  KEY `fal_filelist` (`l10n_parent`,`sys_language_uid`),
+  KEY `pid` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_file_metadata`
---
-
-LOCK TABLES `sys_file_metadata` WRITE;
-/*!40000 ALTER TABLE `sys_file_metadata` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_file_metadata` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_file_processedfile`
---
 
 DROP TABLE IF EXISTS `sys_file_processedfile`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_file_processedfile` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `tstamp` int(11) NOT NULL DEFAULT '0',
@@ -1349,24 +814,9 @@ CREATE TABLE `sys_file_processedfile` (
   KEY `combined_1` (`original`,`task_type`,`configurationsha1`),
   KEY `identifier` (`storage`,`identifier`(199))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_file_processedfile`
---
-
-LOCK TABLES `sys_file_processedfile` WRITE;
-/*!40000 ALTER TABLE `sys_file_processedfile` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_file_processedfile` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_file_reference`
---
 
 DROP TABLE IF EXISTS `sys_file_reference`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_file_reference` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1410,24 +860,9 @@ CREATE TABLE `sys_file_reference` (
   KEY `uid_foreign` (`uid_foreign`),
   KEY `combined_1` (`l10n_parent`,`t3ver_oid`,`t3ver_wsid`,`t3ver_state`,`deleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_file_reference`
---
-
-LOCK TABLES `sys_file_reference` WRITE;
-/*!40000 ALTER TABLE `sys_file_reference` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_file_reference` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_file_storage`
---
 
 DROP TABLE IF EXISTS `sys_file_storage`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_file_storage` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1449,57 +884,9 @@ CREATE TABLE `sys_file_storage` (
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`,`deleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_file_storage`
---
-
-LOCK TABLES `sys_file_storage` WRITE;
-/*!40000 ALTER TABLE `sys_file_storage` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_file_storage` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_filemounts`
---
-
-DROP TABLE IF EXISTS `sys_filemounts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sys_filemounts` (
-  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pid` int(10) unsigned NOT NULL DEFAULT '0',
-  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
-  `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `description` varchar(2000) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `path` varchar(120) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `base` int(10) unsigned NOT NULL DEFAULT '0',
-  `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `deleted` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
-  `read_only` smallint(5) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`uid`),
-  KEY `parent` (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sys_filemounts`
---
-
-LOCK TABLES `sys_filemounts` WRITE;
-/*!40000 ALTER TABLE `sys_filemounts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_filemounts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_history`
---
 
 DROP TABLE IF EXISTS `sys_history`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_history` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1517,24 +904,9 @@ CREATE TABLE `sys_history` (
   KEY `recordident_2` (`tablename`,`tstamp`),
   KEY `sys_log_uid` (`sys_log_uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_history`
---
-
-LOCK TABLES `sys_history` WRITE;
-/*!40000 ALTER TABLE `sys_history` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_history` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_language`
---
 
 DROP TABLE IF EXISTS `sys_language`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_language` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1548,7 +920,6 @@ CREATE TABLE `sys_language` (
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `sys_language`
@@ -1560,13 +931,7 @@ INSERT INTO `sys_language` (`uid`, `pid`, `tstamp`, `hidden`, `title`, `flag`, `
 /*!40000 ALTER TABLE `sys_language` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `sys_lockedrecords`
---
-
 DROP TABLE IF EXISTS `sys_lockedrecords`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_lockedrecords` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `userid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1579,24 +944,9 @@ CREATE TABLE `sys_lockedrecords` (
   PRIMARY KEY (`uid`),
   KEY `event` (`userid`,`tstamp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_lockedrecords`
---
-
-LOCK TABLES `sys_lockedrecords` WRITE;
-/*!40000 ALTER TABLE `sys_lockedrecords` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_lockedrecords` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_log`
---
 
 DROP TABLE IF EXISTS `sys_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_log` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1628,25 +978,10 @@ CREATE TABLE `sys_log` (
   KEY `user_auth` (`type`,`action`,`tstamp`),
   KEY `request` (`request_id`),
   KEY `combined_1` (`tstamp`,`type`,`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `sys_log`
---
-
-LOCK TABLES `sys_log` WRITE;
-/*!40000 ALTER TABLE `sys_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_log` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_news`
---
 
 DROP TABLE IF EXISTS `sys_news`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_news` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1662,24 +997,9 @@ CREATE TABLE `sys_news` (
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_news`
---
-
-LOCK TABLES `sys_news` WRITE;
-/*!40000 ALTER TABLE `sys_news` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_news` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_refindex`
---
 
 DROP TABLE IF EXISTS `sys_refindex`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_refindex` (
   `hash` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `tablename` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -1699,24 +1019,9 @@ CREATE TABLE `sys_refindex` (
   KEY `lookup_uid` (`ref_table`(240),`ref_uid`),
   KEY `lookup_string` (`ref_string`(255))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `sys_refindex`
---
-
-LOCK TABLES `sys_refindex` WRITE;
-/*!40000 ALTER TABLE `sys_refindex` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sys_refindex` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sys_registry`
---
 
 DROP TABLE IF EXISTS `sys_registry`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_registry` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `entry_namespace` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -1724,8 +1029,9 @@ CREATE TABLE `sys_registry` (
   `entry_value` mediumblob,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `entry_identifier` (`entry_namespace`,`entry_key`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 
 --
 -- Dumping data for table `sys_registry`
@@ -1774,13 +1080,7 @@ INSERT INTO `sys_registry` VALUES
 /*!40000 ALTER TABLE `sys_registry` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `sys_template`
---
-
 DROP TABLE IF EXISTS `sys_template`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sys_template` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1817,10 +1117,9 @@ CREATE TABLE `sys_template` (
   PRIMARY KEY (`uid`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`),
   KEY `parent` (`pid`,`deleted`,`hidden`,`sorting`),
-
   KEY `roottemplate` (`deleted`,`hidden`,`root`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Dumping data for table `sys_template`
@@ -1833,13 +1132,7 @@ INSERT INTO `sys_template` (`uid`, `pid`, `t3ver_oid`, `t3ver_id`, `t3ver_wsid`,
 /*!40000 ALTER TABLE `sys_template` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `tt_content`
---
-
 DROP TABLE IF EXISTS `tt_content`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tt_content` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
@@ -1919,36 +1212,21 @@ CREATE TABLE `tt_content` (
   `table_header_position` smallint(5) unsigned NOT NULL DEFAULT '0',
   `table_tfoot` smallint(5) unsigned NOT NULL DEFAULT '0',
   `l10n_state` text COLLATE utf8_unicode_ci,
-  `categories` int(11) NOT NULL DEFAULT 0,
+  `categories` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`),
   KEY `t3ver_oid` (`t3ver_oid`,`t3ver_wsid`),
   KEY `parent` (`pid`,`sorting`),
   KEY `language` (`l18n_parent`,`sys_language_uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tt_content`
---
-
-LOCK TABLES `tt_content` WRITE;
-/*!40000 ALTER TABLE `tt_content` DISABLE KEYS */;
 INSERT INTO `tt_content` (`uid`, `pid`, `t3ver_oid`, `t3ver_id`, `t3ver_wsid`, `t3ver_label`, `t3ver_state`, `t3ver_stage`, `t3ver_count`, `t3ver_tstamp`, `t3ver_move_id`, `t3_origuid`, `tstamp`, `crdate`, `cruser_id`, `editlock`, `hidden`, `sorting`, `CType`, `header`, `header_position`, `rowDescription`, `bodytext`, `bullets_type`, `uploads_description`, `uploads_type`, `assets`, `image`, `imagewidth`, `imageorient`, `imagecols`, `imageborder`, `media`, `layout`, `frame_class`, `deleted`, `cols`, `spaceBefore`, `spaceAfter`, `space_before_class`, `space_after_class`, `records`, `pages`, `starttime`, `endtime`, `colPos`, `subheader`, `fe_group`, `header_link`, `image_zoom`, `header_layout`, `list_type`, `sectionIndex`, `linkToTop`, `file_collections`, `filelink_size`, `filelink_sorting`, `target`, `date`, `recursive`, `imageheight`, `sys_language_uid`, `pi_flexform`, `accessibility_title`, `accessibility_bypass`, `accessibility_bypass_text`, `l18n_parent`, `l18n_diffsource`, `l10n_source`, `selected_categories`, `category_field`, `table_class`, `table_caption`, `table_delimiter`, `table_enclosure`, `table_header_position`, `table_tfoot`, `l10n_state`, `categories`) VALUES
 (1,	1,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1552482027,	1552482027,	1,	0,	0,	256,	'menu_subpages',	'App Auswählen',	'',	'',	NULL,	0,	0,	0,	0,	0,	0,	0,	2,	0,	0,	0,	'default',	0,	0,	0,	0,	'',	'',	NULL,	'',	0,	0,	0,	'',	'',	'',	0,	'0',	'',	1,	0,	NULL,	0,	'',	'',	0,	0,	0,	0,	NULL,	'',	0,	'',	0,	'',	0,	NULL,	'',	'',	NULL,	124,	0,	0,	0,	NULL,	0),
 (2,	2,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860937,	1551860937,	1,	0,	0,	256,	'list',	'',	'',	'',	NULL,	0,	0,	0,	0,	0,	0,	0,	2,	0,	0,	0,	'default',	0,	0,	0,	0,	'',	'',	NULL,	'',	0,	0,	0,	'',	'',	'',	0,	'0',	'visittablets_kartefe',	1,	0,	NULL,	0,	'',	'',	0,	0,	0,	0,	NULL,	'',	0,	'',	0,	'',	0,	NULL,	'',	'',	NULL,	124,	0,	0,	0,	NULL,	0),
 (3,	3,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860941,	1551860941,	1,	0,	0,	256,	'list',	'',	'',	'',	NULL,	0,	0,	0,	0,	0,	0,	0,	2,	0,	0,	0,	'default',	0,	0,	0,	0,	'',	'',	NULL,	'',	0,	0,	0,	'',	'',	'',	0,	'0',	'visittablets_glossarfe',	1,	0,	NULL,	0,	'',	'',	0,	0,	0,	0,	NULL,	'',	0,	'',	0,	'',	0,	NULL,	'',	'',	NULL,	124,	0,	0,	0,	NULL,	0),
 (4,	4,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1551860947,	1551860947,	1,	0,	0,	256,	'list',	'',	'',	'',	NULL,	0,	0,	0,	0,	0,	0,	0,	2,	0,	0,	0,	'default',	0,	0,	0,	0,	'',	'',	NULL,	'',	0,	0,	0,	'',	'',	'',	0,	'0',	'visittablets_galeriefe',	1,	0,	NULL,	0,	'',	'',	0,	0,	0,	0,	NULL,	'',	0,	'',	0,	'',	0,	NULL,	'',	'',	NULL,	124,	0,	0,	0,	NULL,	0),
 (5,	5,	0,	0,	0,	'',	0,	0,	0,	0,	0,	0,	1554192074,	1554192074,	1,	0,	0,	256,	'list',	'',	'',	'',	NULL,	0,	0,	0,	0,	0,	0,	0,	2,	0,	0,	0,	'default',	0,	0,	0,	0,	'',	'',	NULL,	'',	0,	0,	0,	'',	'',	'',	0,	'0',	'visittablets_fernrohrfe',	1,	0,	NULL,	0,	'',	'',	0,	0,	0,	0,	'<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>\n<T3FlexForms>\n    <data>\n        <sheet index=\"sDEF\">\n            <language index=\"lDEF\">\n                <field index=\"imprint\">\n                    <value index=\"vDEF\"></value>\n                </field>\n                <field index=\"maxx\">\n                    <value index=\"vDEF\">5000</value>\n                </field>\n                <field index=\"maxy\">\n                    <value index=\"vDEF\">5000</value>\n                </field>\n                <field index=\"maxxpx\">\n                    <value index=\"vDEF\">5000</value>\n                </field>\n                <field index=\"maxypx\">\n                    <value index=\"vDEF\">5000</value>\n                </field>\n                <field index=\"screenSizeWidth\">\n                    <value index=\"vDEF\">1940</value>\n                </field>\n                <field index=\"screenSizeHight\">\n                    <value index=\"vDEF\">1080</value>\n                </field>\n                <field index=\"sensorhost\">\n                    <value index=\"vDEF\">localhost</value>\n                </field>\n                <field index=\"sensorport\">\n                    <value index=\"vDEF\">8080</value>\n                </field>\n                <field index=\"poiicon\">\n                    <value index=\"vDEF\"></value>\n                </field>\n                <field index=\"langicon_impress\">\n                    <value index=\"vDEF\"></value>\n                </field>\n                <field index=\"langicon_de\">\n                    <value index=\"vDEF\"></value>\n                </field>\n                <field index=\"langicon_en\">\n                    <value index=\"vDEF\"></value>\n                </field>\n                <field index=\"specialIconSize\">\n                    <value index=\"vDEF\">150</value>\n                </field>\n                <field index=\"debugmode\">\n                    <value index=\"vDEF\">0</value>\n                </field>\n            </language>\n        </sheet>\n    </data>\n</T3FlexForms>',	'',	0,	'',	0,	'',	0,	NULL,	'',	'',	NULL,	124,	0,	0,	0,	NULL,	0);
-/*!40000 ALTER TABLE `tt_content` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tx_extensionmanager_domain_model_extension`
---
 
 DROP TABLE IF EXISTS `tx_extensionmanager_domain_model_extension`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tx_extensionmanager_domain_model_extension` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1979,24 +1257,9 @@ CREATE TABLE `tx_extensionmanager_domain_model_extension` (
   KEY `index_versionrepo` (`integer_version`,`repository`,`extension_key`),
   KEY `index_currentversions` (`current_version`,`review_state`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tx_extensionmanager_domain_model_extension`
---
-
-LOCK TABLES `tx_extensionmanager_domain_model_extension` WRITE;
-/*!40000 ALTER TABLE `tx_extensionmanager_domain_model_extension` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tx_extensionmanager_domain_model_extension` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tx_extensionmanager_domain_model_repository`
---
 
 DROP TABLE IF EXISTS `tx_extensionmanager_domain_model_repository`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tx_extensionmanager_domain_model_repository` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2007,19 +1270,7 @@ CREATE TABLE `tx_extensionmanager_domain_model_repository` (
   `last_update` int(10) unsigned NOT NULL DEFAULT '0',
   `extension_count` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tx_extensionmanager_domain_model_repository`
---
-
-LOCK TABLES `tx_extensionmanager_domain_model_repository` WRITE;
-/*!40000 ALTER TABLE `tx_extensionmanager_domain_model_repository` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tx_extensionmanager_domain_model_repository` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 DROP TABLE IF EXISTS `tx_scheduler_task`;
@@ -2040,11 +1291,11 @@ CREATE TABLE `tx_scheduler_task` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `tx_scheduler_task` (`uid`, `crdate`, `disable`, `description`, `nextexecution`, `lastexecution_time`, `lastexecution_failure`, `lastexecution_context`, `serialized_task_object`, `serialized_executions`, `task_group`) VALUES
-(1,	1552571449,	1,	'',	1552571439,	0,	NULL,	'',	'O:53:\"Visit\\VisitTablets\\SchedulerTasks\\UpdateExtensionTask\":7:{s:10:\"\0*\0taskUid\";i:1;s:11:\"\0*\0disabled\";b:1;s:19:\"\0*\0runOnNextCronJob\";b:0;s:12:\"\0*\0execution\";O:29:\"TYPO3\\CMS\\Scheduler\\Execution\":6:{s:8:\"\0*\0start\";i:1552571439;s:6:\"\0*\0end\";i:1552571439;s:11:\"\0*\0interval\";i:0;s:11:\"\0*\0multiple\";i:0;s:10:\"\0*\0cronCmd\";s:0:\"\";s:23:\"\0*\0isNewSingleExecution\";b:0;}s:16:\"\0*\0executionTime\";i:1552571439;s:14:\"\0*\0description\";s:0:\"\";s:12:\"\0*\0taskGroup\";i:0;}',	NULL,	0);
+(1,	1552571449,	1,	'',	0,	1554295347,	'',	'BE',	'O:53:\"Visit\\VisitTablets\\SchedulerTasks\\UpdateExtensionTask\":7:{s:10:\"\0*\0taskUid\";i:1;s:11:\"\0*\0disabled\";b:1;s:19:\"\0*\0runOnNextCronJob\";b:0;s:12:\"\0*\0execution\";O:29:\"TYPO3\\CMS\\Scheduler\\Execution\":6:{s:8:\"\0*\0start\";i:1552571439;s:6:\"\0*\0end\";i:1552571439;s:11:\"\0*\0interval\";i:0;s:11:\"\0*\0multiple\";i:0;s:10:\"\0*\0cronCmd\";s:0:\"\";s:23:\"\0*\0isNewSingleExecution\";b:0;}s:16:\"\0*\0executionTime\";i:1552571439;s:14:\"\0*\0description\";s:0:\"\";s:12:\"\0*\0taskGroup\";i:0;}',	'',	0);
 
 DROP TABLE IF EXISTS `tx_scheduler_task_group`;
 CREATE TABLE `tx_scheduler_task_group` (
-  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,tx_visittablets_domain_model_config
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` int(10) unsigned NOT NULL DEFAULT '0',
   `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `crdate` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2054,6 +1305,26 @@ CREATE TABLE `tx_scheduler_task_group` (
   `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
   `groupName` varchar(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `description` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_cardpoi`;
+CREATE TABLE `tx_visittablets_domain_model_cardpoi` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `language` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `longitude` double NOT NULL DEFAULT '0',
+  `latitude` double NOT NULL DEFAULT '0',
+  `flag_text` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `sub_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `media` int(10) unsigned NOT NULL DEFAULT '0',
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`uid`),
   KEY `parent` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -2090,12 +1361,130 @@ INSERT INTO `tx_visittablets_domain_model_config` (`uid`, `pid`, `language`, `na
 (14,	4,	1,	'imprint',	'<div class=\"modal-content lang-content show-en\">\r\n    <div class=\"modal-body\">\r\n        <h1 class=\"modal-title\">Impressum EN</h1>\r\n        <p>\r\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget elit a lacus sollicitudin finibus. Donec sed arcu mauris. Quisque eget fringilla erat. Cras sit amet sagittis nulla. In quis euismod tellus. Nulla pharetra elit risus, at mattis urna dignissim sit amet. Nunc luctus vestibulum mauris, vel tempor lorem luctus vitae.\r\n        </p>\r\n        <br />\r\n        <div class=\"row imprint-logos\">\r\n            <div class=\"col-3\">\r\n                <img src=\"/typo3conf/ext/visit_tablets/Resources/Public/Backend/images/ViSIT_Logo_web.png\" class=\"img-fluid\">\r\n            </div>\r\n            <div class=\"col-6\">\r\n                <img src=\"/typo3conf/ext/visit_tablets/Resources/Public/Backend/images/interreg.png\" class=\"img-fluid\">\r\n            </div>\r\n            <div class=\"col-3\">\r\n                <img src=\"/typo3conf/ext/visit_tablets/Resources/Public/fh-kufstein.svg\" class=\"img-fluid\">\r\n            </div>\r\n        </div>\r\n        <p>\r\n            Vivamus placerat aliquet posuere. Phasellus aliquet dolor arcu, non semper orci congue vitae. Integer sit amet eros quis sapien iaculis vestibulum. Pellentesque imperdiet vestibulum tincidunt. Sed accumsan dui in odio scelerisque tristique. Pellentesque eu nisi et libero euismod posuere. Praesent ut lobortis enim. Aenean ultrices convallis orci a tincidunt. Etiam placerat, metus sit amet maximus aliquam, augue dui tristique orci, in dictum dui felis in.\r\n        </p>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-primary lang-btn btn-lg\" data-dismiss=\"modal\">\r\n            Close\r\n        </button>\r\n    </div>\r\n</div>',	1554189966,	1554189966),
 (15,	4,	0,	'splash',	'<div class=\"modal-content\">\r\n    <div class=\"modal-body\">\r\n        <h1 class=\"modal-title\">Galerie</h1>\r\n        <h3>Lorem ipsum dolor Subline historisch</h3>\r\n        <br>\r\n        <p>\r\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget elit a lacus sollicitudin finibus. Donec sed arcu mauris. Quisque eget fringilla erat. Cras sit amet sagittis nulla. In quis euismod tellus. Nulla pharetra elit risus, at mattis urna dignissim sit amet. Nunc luctus vestibulum mauris, vel tempor lorem luctus vitae.\r\n            <br><br>\r\n            Vivamus placerat aliquet posuere. Phasellus aliquet dolor arcu, non semper orci congue vitae. Integer sit amet eros quis sapien iaculis vestibulum. Pellentesque imperdiet vestibulum tincidunt. Sed accumsan dui in odio scelerisque tristique. Pellentesque eu nisi et libero euismod posuere. Praesent ut lobortis enim. Aenean ultrices convallis orci a tincidunt. Etiam placerat, metus sit amet maximus aliquam, augue dui tristique orci, in dictum dui felis in.\r\n        </p>\r\n        </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-primary lang-btn btn-lg\" data-dismiss=\"modal\" onclick=\"initLang(\'1\')\"><img src=\"/typo3/sysext/core/Resources/Public/Icons/Flags/en_us-gb.png\">Start in English</button>\r\n        <button type=\"button\" class=\"btn btn-primary lang-btn btn-lg\" data-dismiss=\"modal\" onclick=\"initLang(\'0\')\"><img src=\"/typo3/sysext/core/Resources/Public/Icons/Flags/PNG/DE.png\"> Starten mit Deutsch</button>\r\n    </div>\r\n</div>',	1554189966,	1554189966);
 
--- 2019-04-03 13:14:14
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_event`;
+CREATE TABLE `tx_visittablets_domain_model_event` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name_en` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `inmates` int(10) unsigned DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_galerycontentelement`;
+CREATE TABLE `tx_visittablets_domain_model_galerycontentelement` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `language` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `sub_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `teaser_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `layout` int(11) NOT NULL DEFAULT '0',
+  `media` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_galeryteaserelement`;
+CREATE TABLE `tx_visittablets_domain_model_galeryteaserelement` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `teaser_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `teaser_title_en` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `media` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `galery_content_element` int(10) unsigned NOT NULL DEFAULT '0',
+  `galery_content_element_en` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_inmate`;
+CREATE TABLE `tx_visittablets_domain_model_inmate` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `nationality` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `profession` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `place_of_birth` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `date_of_birth` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `date_of_passing` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `date_of_imprisonment` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `date_of_release` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `subtitle` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `event` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `teasertext` text COLLATE utf8_unicode_ci NOT NULL,
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `media` int(10) unsigned NOT NULL DEFAULT '0',
+  `vip` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `prison_cell` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(11) NOT NULL DEFAULT '0',
+  `language` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_prisoncell`;
+CREATE TABLE `tx_visittablets_domain_model_prisoncell` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name_en` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `inmates` int(10) unsigned DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_scopepoi`;
+CREATE TABLE `tx_visittablets_domain_model_scopepoi` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `x` int(11) NOT NULL DEFAULT '0',
+  `y` int(11) NOT NULL DEFAULT '0',
+  `radius` int(11) NOT NULL DEFAULT '0',
+  `sub_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `media` int(10) unsigned NOT NULL DEFAULT '0',
+  `fullscreenvideo` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `language` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`),
+  KEY `language` (`language`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+-- 2019-04-03 13:22:02
