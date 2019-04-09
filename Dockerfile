@@ -12,14 +12,15 @@ RUN echo "deb http://apt.syncthing.net/ syncthing stable" | tee /etc/apt/sources
     mkdir -p /usr/share/man/man1 && \
     apt-get update && apt-get install -y  --allow-unauthenticated git wget nano mysql-server syncthing default-jre && \
     /etc/init.d/mysql start && \
-	mysql -u root < /tmp/db.sql && \
-	rm -f /tmp/db.sql && \
-	apt-get clean && \
-	wget -q https://github.com/ViSIT-Dev/syncthing-control/raw/master/dist/Syncthing_Control.jar -P /var/www/ && chown www-data:www-data /var/www/Syncthing_Control.jar && \
-	echo "php_value upload_max_filesize 500M" >> /var/www/html/.htaccess && \
-	echo "php_value post_max_size 500M" >> /var/www/html/.htaccess
+    mysql -u root < /tmp/db.sql && \
+    rm -f /tmp/db.sql && \
+    apt-get clean && \
+    wget -q https://github.com/ViSIT-Dev/syncthing-control/raw/master/dist/Syncthing_Control.jar -P /var/www/ && chown www-data:www-data /var/www/Syncthing_Control.jar && \
+    chmod 755 /var/www/Syncthing_Control.jar && chown www-data:www-data /var/www -hR && \
+    echo "php_value upload_max_filesize 500M" >> /var/www/html/.htaccess && \
+    echo "php_value post_max_size 500M" >> /var/www/html/.htaccess
 
-VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql", "/var/syncthing", "/var/p2p"]
+VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql", "/var/www/syncthing", "/var/p2p"]
 
 #syncthing
 EXPOSE 8384 22000 21027/udp
