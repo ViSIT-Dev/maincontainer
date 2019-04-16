@@ -13,6 +13,6 @@ touch /var/log/mysql/error.log /var/log/apache2/error.log
 wget -qO- http://localhost/typo3/ &> /dev/null 
 
 env HOME=/var/www/syncthing
-nohup /usr/bin/syncthing -home /var/www/syncthing -gui-address 0.0.0.0:8384 &>/var/log/syncthing.log &
+su www-data -s /bin/bash -c "nohup /usr/bin/syncthing -home /var/www/syncthing -gui-address 0.0.0.0:8384 &>/var/www/syncthing.log &"
 
-tail -f /var/log/mysql/error.log /var/log/apache2/error.log /var/log/syncthing.log
+tail -f /var/log/mysql/error.log /var/log/apache2/error.log /var/www/syncthing.log
