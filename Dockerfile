@@ -20,7 +20,7 @@ RUN echo "deb http://apt.syncthing.net/ syncthing stable" | tee /etc/apt/sources
     echo "php_value upload_max_filesize 500M" >> /var/www/html/.htaccess && \
     echo "php_value post_max_size 500M" >> /var/www/html/.htaccess
 
-VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql", "/var/www/syncthing", "/var/p2p"]
+VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql", "/var/www/syncthing", "/var/www/Sync"]
 
 #syncthing
 EXPOSE 8384 22000 21027/udp
