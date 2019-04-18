@@ -6,11 +6,14 @@ COPY res/run.sh /root/run.sh
 COPY res/db.sql /tmp/db.sql
 COPY --chown=www-data:www-data res/LocalConfiguration.php /var/www/html/typo3conf/LocalConfiguration.php
 COPY --chown=www-data:www-data res/PackageStates.php /var/www/html/typo3conf/PackageStates.php
+COPY crontab /etc/cron.d/typo3cron
+
 
 RUN echo "deb http://apt.syncthing.net/ syncthing stable" | tee /etc/apt/sources.list.d/syncthing.list && \
     export DEBIAN_FRONTEND=noninteractive && \
     mkdir -p /var/www/Private /var/www/Partner /usr/share/man/man1 && \
     apt-get update && apt-get install -y  --allow-unauthenticated git wget nano mysql-server syncthing default-jre && \
+    apt-get -y install cron && chmod 0644 /etc/cron.d/typo3cron && crontab /etc/cron.d/typo3cron \
     /etc/init.d/mysql start && \
     mysql -u root < /tmp/db.sql && \
     rm -f /tmp/db.sql && \
