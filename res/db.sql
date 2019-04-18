@@ -352,6 +352,28 @@ CREATE TABLE `cf_extbase_reflection_tags` (
   KEY `cache_tag` (`tag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `cf_visit_tablets`;
+CREATE TABLE `cf_visit_tablets` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `expires` int(10) unsigned NOT NULL DEFAULT '0',
+  `content` mediumblob,
+  PRIMARY KEY (`id`),
+  KEY `cache_id` (`identifier`,`expires`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+DROP TABLE IF EXISTS `cf_visit_tablets_tags`;
+CREATE TABLE `cf_visit_tablets_tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `tag` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `cache_id` (`identifier`),
+  KEY `cache_tag` (`tag`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 
 DROP TABLE IF EXISTS `fe_groups`;
 CREATE TABLE `fe_groups` (
