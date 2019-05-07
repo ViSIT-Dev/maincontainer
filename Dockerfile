@@ -22,7 +22,7 @@ RUN chmod 755 /var/www/Syncthing_Control.jar
 RUN echo "php_value upload_max_filesize 500M" >> /var/www/html/.htaccess
 RUN echo "php_value post_max_size 500M" >> /var/www/html/.htaccess
 
-VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql", "/var/www/syncthing", "/var/www/Sync", "/var/www/Private"]
+VOLUME ["/var/www/html/typo3conf/ext/visit_tablets", "/var/lib/mysql", "/var/www/html/fileadmin", "/var/www/syncthing", "/var/www/Sync", "/var/www/Private"]
 
 #syncthing
 EXPOSE 8384 22000 21027/udp
