@@ -1537,5 +1537,23 @@ CREATE TABLE `tx_visittablets_domain_model_scopepoi` (
   KEY `language` (`language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+DROP TABLE IF EXISTS `tx_visittablets_domain_model_galerycontentsubelement`;
+CREATE TABLE `tx_visittablets_domain_model_galerycontentsubelement` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `light_theme` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `media` int(10) unsigned NOT NULL DEFAULT '0',
+  `galery_content_element` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(11) NOT NULL DEFAULT '0',
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `deleted` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `crdate` int(10) unsigned NOT NULL DEFAULT '0',
+  `cruser_id` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`uid`),
+  KEY `parent` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- 2019-04-03 13:22:02
