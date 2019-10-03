@@ -1433,6 +1433,7 @@ CREATE TABLE `tx_visittablets_domain_model_galerycontentelement` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL DEFAULT '0',
   `language` int(11) NOT NULL DEFAULT '0',
+  `sub_elements` int(11) NOT NULL DEFAULT '0',
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `sub_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `teaser_text` text COLLATE utf8_unicode_ci NOT NULL,
